@@ -1,0 +1,14 @@
+{
+    "name": "css-modules-value-animation",
+    "version": "1.0.0",
+    "private": true,
+    "type": "module",
+    "description": "Repro: @value used as an animation/@keyframes name breaks in native CSS modules of both webpack and rspack",
+    "scripts": {
+        "build": "node build.mjs"
+    },
+    "devDependencies": {
+        "@rspack/core": "2.2.3",
+        "webpack": "5.108.4"
+    }
+}

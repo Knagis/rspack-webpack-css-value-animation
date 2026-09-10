@@ -1,0 +1,9 @@
+@value animName: pulseAnim;
+
+.anim {
+    animation: animName 2s linear;
+}
+
+@keyframes animName {
+    from { opacity: 0; }
+}
