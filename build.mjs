@@ -16,6 +16,8 @@ const config = (out) => ({
     module: { rules: [{ test: /\.css$/, type: "css/module" }] },
 });
 
+console.log(`===== input =====\n${fs.readFileSync(path.join(dir, "src/index.css"), "utf8").trim()}\n`);
+
 function run(name, compiler, out) {
     return new Promise((resolve, reject) => {
         compiler.run((err, stats) => {
