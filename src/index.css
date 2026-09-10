@@ -1,4 +1,9 @@
+@value sel: .globalThing;
 @value animName: pulseAnim;
+
+sel {
+    color: blue;
+}
 
 .anim {
     animation: animName 2s linear;
