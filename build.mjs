@@ -31,9 +31,10 @@ const readMainCss = (out) => fs.readFileSync(path.join(dir, out, "main.css"), "u
 
 const readCssFromJsBundle = (out) => {
     const js = fs.readFileSync(path.join(dir, out, "main.js"), "utf8");
-    const match = /___CSS_LOADER_EXPORT___\.push\(\[module\.id, ("(?:[^"\\]|\\.)*")/.exec(js);
+    // css-loader emits the CSS as a template literal: ___CSS_LOADER_EXPORT___.push([module.id, `...`, ""]);
+    const match = /___CSS_LOADER_EXPORT___\.push\(\[module\.id, `((?:[^`\\]|\\[\s\S])*)`/.exec(js);
     if (!match) throw new Error("Could not find the CSS string in the css-loader JS bundle.");
-    return JSON.parse(match[1]);
+    return match[1].replace(/\\([`$\\])/g, "$1");
 };
 
 function run(name, compiler, readCss) {

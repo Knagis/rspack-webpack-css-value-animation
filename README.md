@@ -61,8 +61,23 @@ The declaration value is substituted but **not** hashed (`pulseAnim`), while the
 `@keyframes` prelude is **not** substituted at all — the original `@value` variable
 name is hashed instead (`…-animName`). The two names never match either.
 
+## Webpack + css-loader output (reference behavior)
+
+css-loader 7.1.4 (`modules: true`) handles the same input correctly — the declaration
+and the `@keyframes` rule share one module-scoped name:
+
+```css
+.SePCFMv0ilKIpBAzT_uP {
+    animation: rdfEYemqtlmpyJHiLcG6 2s linear;
+}
+
+@keyframes rdfEYemqtlmpyJHiLcG6 {
+    from { opacity: 0; }
+}
+```
+
 ## Expected
 
 The substituted animation name in the declaration and the `@keyframes` name should
 resolve to the same (module-scoped) identifier, as they do when the name is written
-literally without `@value`.
+literally without `@value` — and as css-loader does above.
